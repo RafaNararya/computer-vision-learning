@@ -20,8 +20,31 @@ roi = image[0: 500, 0: 500]
 cv2.imshow("ROI", roi)
 cv2.waitKey(0)
 
+# Resizes the image but does not preserve the aspect ratio
 resize = cv2.resize(image, (1000, 1000))
 cv2.imshow("Resized", resize)
+cv2.waitKey(0)
+
+ratio = 1000 / w
+dim = (1000, int(h * ratio))
+resize_aspect = cv2.resize(image, dim)
+cv2.imshow("Resized Image", resize_aspect)
+cv2.waitKey(0)
+
+# Drawing a rectangle
+# Rectangle function takes in 5 arguments
+# image, top-left corner coordinate, bottom-right corner coordinate, color (BGR Format), Line Width (Pixels)
+output = image.copy()
+rectangle = cv2.rectangle(output, (0, 0), (600, 400), (255, 0, 0), 2)
+cv2.imshow("Rectangle", rectangle)
+cv2.waitKey(0)
+
+# Text 
+# putText function takes in 7 arguments
+# image, text displayed, coordinates (width, height) from top left, font, font size, color (BGR), Line Width
+output2 = image.copy()
+text = cv2.putText(output2, "TextExample", (0, 100), cv2.FONT_HERSHEY_SIMPLEX, 4, (255, 0, 0), 2)
+cv2.imshow("Text", text)
 cv2.waitKey(0)
 
 # imshow() takes 2 args, name, and "size". If want a specific area, need to specify
